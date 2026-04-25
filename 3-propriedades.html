@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      const typeChildren = {
+        primary: "bg-green-500",
+        secondary: "bg-gray-500",
+      };
+
+      function Button({ variant = "primary", className, children, ...props }) {
+        return (
+          <button
+            className={`px-3 py-2 
+              ${typeChildren[variant]}
+              ${className}
+               rounded text-white`}
+            {...props}
+          >
+            {children}
+          </button>
+        );
+      }
+
+      function App() {
+        return (
+          <main className="flex gap-2 p-3">
+            <Button variant="secondary" className="rounded-xl">
+              Teste A
+            </Button>
+            <Button> Teste B </Button>
+          </main>
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+  </body>
+</html>
