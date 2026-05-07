@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      function AlertOne() {
+        function handleAlertClick(event) {
+          console.log(event);
+          alert("Alert One :)");
+        }
+
+        return (
+          <button type="button" onClick={handleAlertClick}>
+            Botão AlertOne
+          </button>
+        );
+      }
+
+      function AlertTwo() {
+        function handleAlertClick(msg) {
+          alert(msg);
+        }
+
+        return (
+          <button
+            type="button"
+            onClick={() => {
+              handleAlertClick("Mensagem via param");
+            }}
+          >
+            Botão AlertTwo
+          </button>
+        );
+      }
+
+      function AlertThree() {
+        function handleAlertClick(event) {
+          alert(event.target.previousSibling.value);
+        }
+
+        return (
+          <div>
+            <input type="text" placeholder="Digite o alert aqui" />
+            <button onClick={handleAlertClick}>Botão Alert Three</button>
+          </div>
+        );
+      }
+
+      function App() {
+        return (
+          <main>
+            <AlertOne />
+            <AlertTwo />
+            <AlertThree />
+          </main>
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+  </body>
+</html>
